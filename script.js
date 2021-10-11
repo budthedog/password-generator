@@ -6,7 +6,7 @@ var finalPassword = "";
 var displayPassword = ""; 
 
 // random object
-var pCriteria = {
+var rCriteria = {
   lowercase: { indexNumber: 0 , criteria: "abcdefghijklmnopqrstuvwxyz"
   },
   uppercase: { indexNumber: 1, criteria: "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -188,22 +188,22 @@ function generatePasswordRandomness(userInput, pLength) {
     if (guaranteedCriteria === "1") {
       
       valueRandom = Math.floor(Math.random() * 26);
-      finalPassword += pCriteria.lowercase.criteria[valueRandom];
+      finalPassword += rCriteria.lowercase.criteria[valueRandom];
 
     } else if (guaranteedCriteria === "2") {
       
       valueRandom = Math.floor(Math.random() * 26);
-      finalPassword += pCriteria.uppercase.criteria[valueRandom];
+      finalPassword += rCriteria.uppercase.criteria[valueRandom];
 
     } else if (guaranteedCriteria === "3") {
 
       valueRandom = Math.floor(Math.random() * 10);
-      finalPassword += pCriteria.numeric.criteria[valueRandom];
+      finalPassword += rCriteria.numeric.criteria[valueRandom];
 
     } else if (guaranteedCriteria === "4") {
 
       valueRandom = Math.floor(Math.random() * 31);
-      finalPassword += pCriteria.symbols.criteria[valueRandom];
+      finalPassword += rCriteria.symbols.criteria[valueRandom];
     } 
   }
 
@@ -231,19 +231,19 @@ function generatePasswordRandomness(userInput, pLength) {
       case 1:
       
         valueRandom = Math.floor(Math.random() * 26);
-        finalPassword += pCriteria.lowercase.criteria[valueRandom];
+        finalPassword += rCriteria.lowercase.criteria[valueRandom];
           break; 
       case 2:
         valueRandom = Math.floor(Math.random() * 26);
-        finalPassword += pCriteria.uppercase.criteria[valueRandom];
+        finalPassword += rCriteria.uppercase.criteria[valueRandom];
         break;
       case 3:
         valueRandom = Math.floor(Math.random() * 10);
-        finalPassword += pCriteria.numeric.criteria[valueRandom];
+        finalPassword += rCriteria.numeric.criteria[valueRandom];
         break;
       case 4:
         valueRandom = Math.floor(Math.random() * 31);
-        finalPassword += pCriteria.symbols.criteria[valueRandom];
+        finalPassword += rCriteria.symbols.criteria[valueRandom];
         break;
     }
   }
