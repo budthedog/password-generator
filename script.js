@@ -1,4 +1,3 @@
-
 // Global Variables
 var arraySplit = ""; 
 var exitApplication = false; 
@@ -7,29 +6,29 @@ var finalPassword = "";
 var displayPassword = ""; 
 
 // random object
-var rCriteria = {
+var pCriteria = {
   lowercase: { indexNumber: 0 , criteria: "abcdefghijklmnopqrstuvwxyz"
   },
   uppercase: { indexNumber: 1, criteria: "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
   },
   numeric: { indexNumber: 2, criteria: "0123456789"
   },
-  symbols: { indexNumber: 3, criteria: "!\"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~"
+    symbols: { indexNumber: 3, criteria: "!\"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~"
   }
 }
 
-// prompt for generation criteria 
+// prompt for generation criteria
 var generatePassword = function() {
 
 
-   
+  
    arraySplit = ""; 
    exitApplication = false; 
    userInput = ""; 
    finalPassword = ""; 
    displayPassword = ""; 
 
-  // Alert user for criteria
+  
   window.alert("The criteria for password generator are lowercase, uppercase, numeric, and/or special characters.");
 
   var validInput = true;
@@ -37,8 +36,8 @@ var generatePassword = function() {
 
 
   while(validInput) {
-    // Take user input
-    userInput = window.prompt("Select criteria for password (you can select more than one use space between): 1=lowercase 2=uppercase 3=numeric 4=special characters.\n");
+    
+    userInput = window.prompt("Select criteria for password (you can select more than one) (use space): 1=lowercase 2=uppercase 3=numeric 4=special characters.\n");
     if (!userInput) {
       window.alert("If you wish to close the application, please close this password generator tab.")
       generatePassword();
@@ -56,9 +55,9 @@ var generatePassword = function() {
     for (var i = 0; i < userInput.length; i++) {
       
       var inputCriteria = userInput[i];
-     
+      
       var inputCriteriaInteger = parseInt(inputCriteria);
-    
+      
       switch(inputCriteriaInteger) { 
         case 1:
         case 2:
@@ -78,32 +77,32 @@ var generatePassword = function() {
       }
     }
 
-                          
+                                
 
     
     var duplicatePassState = true;
-  
+    
     var validateInput = [];
     var round1In = "";
     var round1In2 = "";
 
 
-    
+   
     if (userInput.length == 1) {
       duplicatePassState = false;
     }
 
-     
+      
       while (duplicatePassState) {
 
-        
+      
         var tempVar = "";
         for (var i = 0; i < userInput.length; i++) {
           tempVar = userInput[i];
           validateInput.push(tempVar);
         }
 
-        
+
         round1In = validateInput.shift();
         round1In2 = validateInput.pop();
         if (round1In === round1In2) {
@@ -118,8 +117,7 @@ var generatePassword = function() {
           round2In = validateInput.shift();
           round2In2 = validateInput.pop();
 
-          
-
+        
           if(!round2In || !round2In2) {
             duplicatePassState = false;
             break;
@@ -147,7 +145,7 @@ var generatePassword = function() {
             generatePassword();
           } 
           else {
-        
+            
             duplicatePassState = false;
           }
         } 
@@ -158,73 +156,72 @@ var generatePassword = function() {
 //how long the generated password should be
 function passlength () { 
 
-  
-  window.alert("How long do you want your password to be from 8-128 characters.\n E.x 16");
-  var plength = parseInt(window.prompt("Please enter length")); 
-  if (plength < 8 || plength > 128) {
+ 
+  window.alert("How long do you want your password to be from 8-128 characters.\n E.x 20");
+  var pLength = parseInt(window.prompt("Please enter length")); 
+  if (pLength < 8 || pLength > 128) {
     
     window.alert("Please enter a valid number between 8-128");
     passlength();
 
-  } else if (!plength) { 
+  } else if (!pLength) { 
     window.alert("Please enter a valid number between 8-128")
     passlength(); 
   } else {
-    window.alert("You have entered a valid length of: " + plength + "\n Password will now be generated");
-    return plength; 
+    window.alert("You have entered a valid length of: " + pLength + "\n Password will now be generated");
+    return pLength; 
   }
 }
 
-//uses the char type/length criteria to generate the password
-function generatePasswordRandomness(userInput, plength) {
+// uses the char type/length to generate the password
+function generatePasswordRandomness(userInput, pLength) {
   
   var valueRandom = 0;
   var counter = userInput.length 
   var UserCounter = userInput.length 
-  var finalPassword = ""; 
-
+  var finalPassword = "";  
   
   for (var i = 0; i < userInput.length; i++) {
 
     var guaranteedCriteria = userInput[i];
     
     if (guaranteedCriteria === "1") {
-
+      
       valueRandom = Math.floor(Math.random() * 26);
-      finalPassword += rCriteria.lowercase.criteria[valueRandom];
+      finalPassword += pCriteria.lowercase.criteria[valueRandom];
 
     } else if (guaranteedCriteria === "2") {
       
       valueRandom = Math.floor(Math.random() * 26);
-      finalPassword += rCriteria.uppercase.criteria[valueRandom];
+      finalPassword += pCriteria.uppercase.criteria[valueRandom];
 
     } else if (guaranteedCriteria === "3") {
 
       valueRandom = Math.floor(Math.random() * 10);
-      finalPassword += rCriteria.numeric.criteria[valueRandom];
+      finalPassword += pCriteria.numeric.criteria[valueRandom];
 
     } else if (guaranteedCriteria === "4") {
 
       valueRandom = Math.floor(Math.random() * 31);
-      finalPassword += rCriteria.symbols.criteria[valueRandom];
+      finalPassword += pCriteria.symbols.criteria[valueRandom];
     } 
   }
 
   
-  while ( counter < plength )  {
+  while ( counter < pLength )  {
 
     if (!userInput[(UserCounter - 1)]) {
-
+      
       UserCounter -= Math.floor( ( (Math.random() * userInput.length) + 1) );
       counter += 1;
   
     } else {
-
+      
       UserCounter = Math.floor( ( (Math.random() * userInput.length) + 1) );
       counter += 1;
     }
 
-
+    
     var inputCriteria = userInput[(UserCounter - 1)];
     
     
@@ -232,21 +229,21 @@ function generatePasswordRandomness(userInput, plength) {
 
     switch(inputCriteriaInteger) { 
       case 1:
-       
+      
         valueRandom = Math.floor(Math.random() * 26);
-        finalPassword += rCriteria.lowercase.criteria[valueRandom];
+        finalPassword += pCriteria.lowercase.criteria[valueRandom];
           break; 
       case 2:
         valueRandom = Math.floor(Math.random() * 26);
-        finalPassword += rCriteria.uppercase.criteria[valueRandom];
+        finalPassword += pCriteria.uppercase.criteria[valueRandom];
         break;
       case 3:
         valueRandom = Math.floor(Math.random() * 10);
-        finalPassword += rCriteria.numeric.criteria[valueRandom];
+        finalPassword += pCriteria.numeric.criteria[valueRandom];
         break;
       case 4:
         valueRandom = Math.floor(Math.random() * 31);
-        finalPassword += rCriteria.symbols.criteria[valueRandom];
+        finalPassword += pCriteria.symbols.criteria[valueRandom];
         break;
     }
   }
@@ -259,22 +256,23 @@ function generatePasswordRandomness(userInput, plength) {
 // Write password to the #password input
 function writePassword() {
  
-  s
-  arraySplit = "";
+
+  arraySplit = ""; 
   exitApplication = false; 
   userInput = ""; 
   finalPassword = ""; 
   displayPassword = ""; 
   window.alert(" Lets check our password criteria options");
+  var password = generatePassword(); //different method
   
-  var plength = passlength();
-
-  displayPassword = generatePasswordRandomness(userInput,plength);
+  var pLength = passlength();
+  
+  displayPassword = generatePasswordRandomness(userInput,pLength);
 
 
   var passwordText = document.querySelector("#password"); 
   
- 
+  
   document.getElementById("password").readOnly = false; 
   document.getElementById("password").value = displayPassword; 
   document.getElementById("password").readOnly = true; 
@@ -286,4 +284,3 @@ var generateBtn = document.querySelector("#generate");
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-//why wont my commits show up
